@@ -25,6 +25,7 @@ app.listen(port, function () {
 });
 
 bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
     const userName = msg.from.first_name
     bot.sendMessage(chatId, `خوش اومدی ${userName} جان`)
 })
