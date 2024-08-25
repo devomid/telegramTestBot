@@ -30,10 +30,10 @@ bot.onText(/\/start/, (msg) => {
     bot.sendMessage(chatId, `خوش اومدی ${userName} جان`)
 })
 
-// bot.on('message', (msg) => {
-//     const chatId = msg.chat.id;
-//     const userName = msg.from.first_name
-//     const userInput = msg.text
-//     console.log(msg);
-//     bot.sendMessage(chatId, `پیام شما:  ${userInput}`);
-// });
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    const userName = msg.from.first_name
+    const userInput = msg.text
+    console.log(msg);
+    bot.sendMessage(chatId, `پیام شما:  ${userInput}`);
+});
