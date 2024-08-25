@@ -11,20 +11,23 @@ const bot = new TelegramBot(token, { polling: true });
 
 app.use(express.json());
 
-app.listen(port, async () => {
-    console.log(`app is running on port ${port}`);
+
+app.get('*', async (req, res) => {
+    res.send('hello get');
+    console.log(req.body);
+});
+app.post('*', async (req, res) => {
+    res.send('hello get');
 });
 
-app.get('*', function (req, res) {
-    res.send('hello get');
-});
-app.post('*', function (req, res) {
-    res.send('hello get');
+app.listen(port, function () {
+    console.log(`app is running on port ${port}`);
 });
 
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
-
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Received your message');
+    const userName = msg.from.first_name
+    const userInput = msg.text
+    console.log(msg);
+    bot.sendMessage(chatId, `سلام ${userName}\n\nپیام شما:  ${userInput}`);
 });
